@@ -7,5 +7,5 @@
     3.1 user 部署 MyERC20 合约
     3.2 user 部署 Bank 合约(MyERC20 合约地址传进去)
     3.4 user 调用 MyERC20 合约的 approve 为 Bank 合约授权一定数量的 token
-    3.5 user 调用 Bank 合约的 deposite 进行存款
+    3.5 user 调用 Bank 合约内 deposite 方法内的 transferFrom 向 Bank 转账，并记录谁向 Bank 转账的数量.
 ```

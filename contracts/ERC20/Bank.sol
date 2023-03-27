@@ -18,9 +18,9 @@ contract Bank {
 
     // 用户存款方法
     function deposite(address user, uint amount) public payable {
-        // 使用 ERC20 合约的 transferFrom 方法进行
-        // 问题 该方法在这里里面的作用
+        // 使用 ERC20 合约的 transferFrom 向 合约转账
         require(IERC20(token).transferFrom(msg.sender, address(this), amount),"Transfer from error");
+        // 记录 user 存储了 amount 的资金
         _balance[user] += amount;
     }
 
