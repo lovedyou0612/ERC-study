@@ -19,9 +19,11 @@ contract Bank{
         require(IERC20(token).transferFrom(msg.sender, address(this), amount), "Transfer from error");
         deposited[user] += amount;
     }
-
+    // 先线下获取签名信息,传入 permitDeposit 
     function permitDeposit(address user, uint amount, uint deadline, uint8 v, bytes32 r, bytes32 s) external {
+        // permit 内 根据签名信息 调用_approve 进行授权
         IERC20Permit(token).permit(msg.sender, address(this), amount, deadline, v, r, s);
+        // 调用 deposit 方法进行转账
         deposit(user, amount);
     }
 
